@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="colors_progress_bar">
+        <item>@color/color_progress_bar_1</item>
+        <item>@color/color_progress_bar_3</item>
+        <item>@color/color_progress_bar_5</item>
+        <item>@color/color_progress_bar_7</item>
+        <item>@color/color_progress_bar_9</item>
+        <item>@color/color_progress_bar_11</item>
+        <item>@color/color_progress_bar_13</item>
+        <item>@color/color_progress_bar_15</item>
+    </integer-array>
+
+    <color name="color_progress_bar_1">#8e44ad</color>
+    <color name="color_progress_bar_2">#9b59b6</color>
+    <color name="color_progress_bar_3">#2c3e50</color>
+    <color name="color_progress_bar_4">#34495e</color>
+    <color name="color_progress_bar_5">#2980b9</color>
+    <color name="color_progress_bar_6">#3498db</color>
+    <color name="color_progress_bar_7">#1abc9c</color>
+    <color name="color_progress_bar_8">#2ecc71</color>
+    <color name="color_progress_bar_9">#16a085</color>
+    <color name="color_progress_bar_10">#27ae60</color>
+    <color name="color_progress_bar_11">#f1c40f</color>
+    <color name="color_progress_bar_12">#f39c12</color>
+    <color name="color_progress_bar_13">#e67e22</color>
+    <color name="color_progress_bar_14">#d35400</color>
+    <color name="color_progress_bar_15">#e74c3c</color>
+    <color name="color_progress_bar_16">#c0392b</color>
+</resources>
