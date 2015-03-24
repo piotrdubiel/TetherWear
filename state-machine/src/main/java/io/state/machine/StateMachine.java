@@ -1,4 +1,4 @@
-package io.wear.tether.state;
+package io.state.machine;
 
 import android.content.Context;
 import android.util.Log;

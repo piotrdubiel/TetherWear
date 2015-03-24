@@ -19,6 +19,12 @@
             </intent-filter>
         </service>
 
+        <receiver android:name=".service.WifiStateChangeReceiver">
+            <intent-filter>
+                <action android:name="android.net.wifi.WIFI_AP_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>

@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@android:color/black"
     android:layout_centerInParent="true">
 
     <fr.castorflex.android.circularprogressbar.CircularProgressBar
@@ -16,12 +16,11 @@
         app:cpb_colors="@array/colors_progress_bar" />
 
 
-    <android.support.wearable.view.CircledImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/icon_wifi_tethering_white"
-        android:layout_centerInParent="true"
-        app:circle_color="@color/color_progress_bar_5"
-        app:circle_radius="40dp"/>
+    <!--<android.support.wearable.view.CircledImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:src="@drawable/icon_notification"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--app:circle_radius="40dp"/>-->
 
 </RelativeLayout>

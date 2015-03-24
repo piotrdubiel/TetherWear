@@ -6,11 +6,11 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.wearable.Wearable;
 
-import io.wear.tether.WifiTetherActivity;
+import io.wear.tether.BaseHotspotActivity;
 
-public class DisconnectedState extends WifiTetherActivityState implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+public class DisconnectedState extends ChangeHotspotState implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     @Override
-    public void onStateApplied(WifiTetherActivity stateContext) {
+    public void onStateApplied(BaseHotspotActivity stateContext) {
         super.onStateApplied(stateContext);
 
         stateContext.googleApiClient = new GoogleApiClient.Builder(stateContext)
@@ -24,7 +24,7 @@ public class DisconnectedState extends WifiTetherActivityState implements Google
 
     @Override
     public void onConnected(Bundle bundle) {
-        stateContext.setState(new RequestTetheringState());
+        stateContext.setState(new RequestState());
     }
 
     @Override

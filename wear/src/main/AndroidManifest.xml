@@ -4,7 +4,7 @@
     <uses-feature android:name="android.hardware.type.watch" />
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/ic_wifi_tethering_black_48dp"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.DeviceDefault">
 
@@ -14,9 +14,21 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name="WifiTetherActivity"
-            android:label="@string/app_name"
-            android:launchMode="singleInstance">
+            android:name=".EnableHotspotActivity"
+            android:label="@string/app_enable_wifi_tethering"
+            android:launchMode="singleInstance"
+            android:icon="@drawable/icon_tether_enabled">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".DisableHotspotActivity"
+            android:label="@string/app_disable_wifi_tethering"
+            android:launchMode="singleInstance"
+            android:icon="@drawable/icon_tether_disabled">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

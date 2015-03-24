@@ -23,6 +23,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(":common")
+    compile project(":state-machine")
     compile 'com.google.android.support:wearable:1.0.0'
     compile 'com.github.castorflex.smoothprogressbar:library-circular:1.0.1'
 }

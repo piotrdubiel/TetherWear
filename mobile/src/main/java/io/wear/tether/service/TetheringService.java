@@ -1,9 +1,6 @@
 package io.wear.tether.service;
 
-import android.content.Intent;
 import android.net.wifi.WifiManager;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
 
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -14,9 +11,10 @@ import com.google.android.gms.wearable.WearableListenerService;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import io.wear.tether.R;
-
-import static io.wear.tether.messages.MessageConstants.*;
+import static io.wear.tether.messages.MessageConstants.REQUEST_WIFI_TETHER_OFF;
+import static io.wear.tether.messages.MessageConstants.REQUEST_WIFI_TETHER_ON;
+import static io.wear.tether.messages.MessageConstants.RESULT_FAILURE;
+import static io.wear.tether.messages.MessageConstants.RESULT_SUCCESS;
 
 
 public class TetheringService extends WearableListenerService {
@@ -33,26 +31,25 @@ public class TetheringService extends WearableListenerService {
 
     @Override
     public void onMessageReceived(MessageEvent messageEvent) {
-        if (messageEvent.getPath().equals(REQUEST_WIFI_TETHER_ON)) {
-            String node = messageEvent.getSourceNodeId();
-            try {
+        String node = messageEvent.getSourceNodeId();
+        try {
+            if (messageEvent.getPath().equals(REQUEST_WIFI_TETHER_ON)) {
                 setWifiTetheringEnabled(true);
-            } catch (InvocationTargetException e) {
-                e.printStackTrace();
-                Log.d("Tether", e.toString());
-                fail(node);
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-                Log.d("Tether", e.toString());
-                fail(node);
             }
-            ok(node);
+            else if (messageEvent.getPath().equals(REQUEST_WIFI_TETHER_OFF)) {
+                setWifiTetheringEnabled(false);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.d("Tether", e.toString());
+            fail(node);
         }
+        ok(node);
     }
 
     private void setWifiTetheringEnabled(boolean enable) throws InvocationTargetException, IllegalAccessException {
         WifiManager wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
-        wifiManager.setWifiEnabled(false);
+        wifiManager.setWifiEnabled(!enable);
 
         Method[] methods = wifiManager.getClass().getDeclaredMethods();
         for (Method method : methods) {

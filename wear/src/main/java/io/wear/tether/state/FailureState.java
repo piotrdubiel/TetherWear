@@ -1,11 +1,11 @@
 package io.wear.tether.state;
 
+import io.wear.tether.BaseHotspotActivity;
 import io.wear.tether.R;
-import io.wear.tether.WifiTetherActivity;
 
-public class FailureState extends WifiTetherActivityState {
+public class FailureState extends ChangeHotspotState {
     @Override
-    public void onStateApplied(WifiTetherActivity stateContext) {
+    public void onStateApplied(BaseHotspotActivity stateContext) {
         super.onStateApplied(stateContext);
         stateContext.showFailure(stateContext.getResources().getString(R.string.lb_message_fail));
         stateContext.finish();

@@ -12,13 +12,11 @@ import com.google.android.gms.wearable.Wearable;
 import java.util.Collection;
 import java.util.HashSet;
 
-import io.wear.tether.WifiTetherActivity;
+import io.wear.tether.BaseHotspotActivity;
 
-import static io.wear.tether.messages.MessageConstants.REQUEST_WIFI_TETHER_ON;
-
-public class RequestTetheringState extends WifiTetherActivityState implements ResultCallback<MessageApi.SendMessageResult> {
+public class RequestState extends ChangeHotspotState implements ResultCallback<MessageApi.SendMessageResult> {
     @Override
-    public void onStateApplied(WifiTetherActivity stateContext) {
+    public void onStateApplied(BaseHotspotActivity stateContext) {
         super.onStateApplied(stateContext);
         new RequestTetheringTask().execute();
     }
@@ -39,8 +37,7 @@ public class RequestTetheringState extends WifiTetherActivityState implements Re
     public void onResult(MessageApi.SendMessageResult sendMessageResult) {
         if (sendMessageResult.getStatus().isSuccess()) {
             stateContext.setState(new WaitForResponseState());
-        }
-        else {
+        } else {
             stateContext.setState(new FailureState());
         }
     }
@@ -59,8 +56,8 @@ public class RequestTetheringState extends WifiTetherActivityState implements Re
                 Wearable.MessageApi.sendMessage(
                         stateContext.googleApiClient,
                         node,
-                        REQUEST_WIFI_TETHER_ON,
-                        new byte[0]).setResultCallback(RequestTetheringState.this);
+                        stateContext.getRequestToSend(),
+                        new byte[0]).setResultCallback(RequestState.this);
             }
             return null;
         }
