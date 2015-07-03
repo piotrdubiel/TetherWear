@@ -3,7 +3,7 @@ package io.state.machine;
 import android.content.Context;
 import android.util.Log;
 
-public class StateMachine<STATE extends State> implements Stateable<STATE> {
+public class StateMachine<STATE extends State> implements Stateful<STATE> {
     private static final String TAG = "StateMachine";
     protected STATE currentState;
     protected STATE previousState;

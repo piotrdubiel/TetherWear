@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black"
     android:layout_centerInParent="true">
 
     <fr.castorflex.android.circularprogressbar.CircularProgressBar
@@ -14,13 +13,5 @@
         android:layout_margin="40dp"
         android:indeterminate="true"
         app:cpb_colors="@array/colors_progress_bar" />
-
-
-    <!--<android.support.wearable.view.CircledImageView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:src="@drawable/icon_notification"-->
-        <!--android:layout_centerInParent="true"-->
-        <!--app:circle_radius="40dp"/>-->
 
 </RelativeLayout>

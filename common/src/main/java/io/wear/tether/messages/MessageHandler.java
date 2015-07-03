@@ -3,13 +3,11 @@ package io.wear.tether.messages;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.wearable.MessageApi;
 import com.google.android.gms.wearable.MessageApi.MessageListener;
-import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.NodeApi;
 import com.google.android.gms.wearable.Wearable;
@@ -32,8 +30,8 @@ public class MessageHandler implements GoogleApiClient.ConnectionCallbacks, Resu
                 .build();
     }
 
-    public void sendMessageToNode(String node, String messsage, byte[] data) {
-        new SendMessageTask(node, messsage, data).execute();
+    public void sendMessageToNode(String node, String message, byte[] data) {
+        new SendMessageTask(node, message, data).execute();
     }
 
     public void sendMessageToAllNodes(String path, byte[] data) {
@@ -60,7 +58,7 @@ public class MessageHandler implements GoogleApiClient.ConnectionCallbacks, Resu
     }
 
     private Collection<String> getNodes() {
-        HashSet<String> results = new HashSet<String>();
+        HashSet<String> results = new HashSet<>();
         NodeApi.GetConnectedNodesResult nodes =
                 Wearable.NodeApi.getConnectedNodes(mGoogleApiClient).await();
 

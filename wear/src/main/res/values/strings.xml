@@ -1,10 +1,8 @@
 <resources>
     <string name="app_name">TetherWear</string>
-    <string name="lb_wifi_tether_on">Wifi tethering on</string>
-    <string name="lb_wifi_tether_off">Wifi tethering off</string>
+    <string name="lb_wifi_tether_on">WiFi on</string>
+    <string name="lb_wifi_tether_off">WiFi off</string>
     <string name="lb_wifi_tether_fail">Can\'t start tethering</string>
     <string name="lb_message_fail">Failed</string>
     <string name="lb_connection_fail">No connection</string>
-    <string name="app_enable_wifi_tethering">Tether on</string>
-    <string name="app_disable_wifi_tethering">Tether off</string>
 </resources>

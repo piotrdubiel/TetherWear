@@ -34,10 +34,11 @@ public class TetheringService extends WearableListenerService {
         String node = messageEvent.getSourceNodeId();
         try {
             if (messageEvent.getPath().equals(REQUEST_WIFI_TETHER_ON)) {
+                setWifiEnabled(false);
                 setWifiTetheringEnabled(true);
-            }
-            else if (messageEvent.getPath().equals(REQUEST_WIFI_TETHER_OFF)) {
+            } else if (messageEvent.getPath().equals(REQUEST_WIFI_TETHER_OFF)) {
                 setWifiTetheringEnabled(false);
+                setWifiEnabled(true);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -49,7 +50,6 @@ public class TetheringService extends WearableListenerService {
 
     private void setWifiTetheringEnabled(boolean enable) throws InvocationTargetException, IllegalAccessException {
         WifiManager wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
-        wifiManager.setWifiEnabled(!enable);
 
         Method[] methods = wifiManager.getClass().getDeclaredMethods();
         for (Method method : methods) {
@@ -58,6 +58,11 @@ public class TetheringService extends WearableListenerService {
                 break;
             }
         }
+    }
+
+    private void setWifiEnabled(boolean enable) {
+        WifiManager wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
+        wifiManager.setWifiEnabled(enable);
     }
 
     private void ok(String node) {

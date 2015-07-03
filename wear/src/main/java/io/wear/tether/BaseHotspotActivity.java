@@ -10,11 +10,11 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 import io.wear.tether.state.ChangeHotspotState;
 import io.state.machine.StateMachine;
-import io.state.machine.Stateable;
+import io.state.machine.Stateful;
 
-public abstract class BaseHotspotActivity extends Activity implements Stateable<ChangeHotspotState> {
+public abstract class BaseHotspotActivity extends Activity implements Stateful<ChangeHotspotState> {
     public GoogleApiClient googleApiClient;
-    StateMachine<ChangeHotspotState> stateMachine;
+    protected StateMachine<ChangeHotspotState> stateMachine;
     private String requestToSend;
 
     public BaseHotspotActivity(String requestToSend) {
@@ -28,7 +28,7 @@ public abstract class BaseHotspotActivity extends Activity implements Stateable<
         setContentView(R.layout.progress_view);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        stateMachine = new StateMachine<ChangeHotspotState>(this);
+        stateMachine = new StateMachine<>(this);
     }
 
 

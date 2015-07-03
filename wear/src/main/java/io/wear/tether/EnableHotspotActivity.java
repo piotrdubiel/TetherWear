@@ -33,12 +33,22 @@ public class EnableHotspotActivity extends BaseHotspotActivity {
         PendingIntent disablePendingIntent =
                 PendingIntent.getActivity(this, 0, disableIntent, 0);
 
+        NotificationCompat.Action action = new NotificationCompat.Action.Builder(
+                R.drawable.ic_portable_wifi_off_teal_800_36dp, null, disablePendingIntent).build();
+
+        NotificationCompat.WearableExtender wearableOptions =
+                new NotificationCompat.WearableExtender()
+                        .addAction(action)
+                        .setContentAction(0)
+                        .setHintHideIcon(true);
+
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                 .setPriority(Notification.PRIORITY_MAX)
                 .setContentTitle(getResources().getString(R.string.lb_wifi_tether_on))
-                .setSmallIcon(R.drawable.icon_tether_enabled)
-                .addAction(R.drawable.ic_close_white_48dp, "Turn off", disablePendingIntent)
-                .addAction(R.drawable.ic_result_open_white, "Open on phone", disablePendingIntent);
+                .setSmallIcon(R.drawable.ic_portable_wifi_off_teal_800_36dp)
+                .addAction(R.drawable.ic_portable_wifi_off_teal_800_36dp, "Turn off", disablePendingIntent)
+                .setOngoing(true)
+                .extend(wearableOptions);
 
         int notificationId = 1;
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);

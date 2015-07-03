@@ -22,7 +22,7 @@ public class RequestState extends ChangeHotspotState implements ResultCallback<M
     }
 
     private Collection<String> getNodes() {
-        HashSet<String> results = new HashSet<String>();
+        HashSet<String> results = new HashSet<>();
         NodeApi.GetConnectedNodesResult nodes =
                 Wearable.NodeApi.getConnectedNodes(stateContext.googleApiClient).await();
 
