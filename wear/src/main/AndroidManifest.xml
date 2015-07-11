@@ -12,7 +12,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_wifi_tethering_teal_800_36dp"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.DeviceDefault">
+        android:theme="@style/AppTheme">
 
 
         <meta-data
@@ -23,7 +23,18 @@
             android:name=".EnableHotspotActivity"
             android:label="@string/lb_wifi_tether_on"
             android:launchMode="singleInstance"
-            android:icon="@drawable/ic_wifi_tethering_teal_800_36dp">
+            android:icon="@drawable/ic_wifi_tethering_teal_800_48dp">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".DisableHotspotActivity"
+            android:label="@string/lb_wifi_tether_off"
+            android:launchMode="singleInstance"
+            android:icon="@drawable/ic_portable_wifi_off_teal_800_48dp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

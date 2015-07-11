@@ -4,7 +4,10 @@ import com.google.android.gms.wearable.MessageApi;
 import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.Wearable;
 
+import java.nio.charset.StandardCharsets;
+
 import io.wear.tether.BaseHotspotActivity;
+import io.wear.tether.messages.ConfigurationModel;
 
 import static io.wear.tether.messages.MessageConstants.RESULT_FAILURE;
 import static io.wear.tether.messages.MessageConstants.RESULT_SUCCESS;
@@ -25,7 +28,12 @@ public class WaitForResponseState extends ChangeHotspotState implements MessageA
     @Override
     public void onMessageReceived(MessageEvent messageEvent) {
         if (messageEvent.getPath().equals(RESULT_SUCCESS)) {
-            stateContext.setState(new SuccessState());
+            if (messageEvent.getData().length > 0) {
+                stateContext.setState(new SuccessState(ConfigurationModel.fromBytes(messageEvent.getData())));
+            }
+            else {
+                stateContext.setState(new SuccessState(null));
+            }
         } else if (messageEvent.getPath().equals(RESULT_FAILURE)) {
             stateContext.setState(new FailureState());
         }

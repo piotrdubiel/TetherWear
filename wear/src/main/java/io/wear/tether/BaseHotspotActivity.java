@@ -8,6 +8,7 @@ import android.view.WindowManager;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import io.wear.tether.messages.ConfigurationModel;
 import io.wear.tether.state.ChangeHotspotState;
 import io.state.machine.StateMachine;
 import io.state.machine.Stateful;
@@ -56,5 +57,5 @@ public abstract class BaseHotspotActivity extends Activity implements Stateful<C
         return requestToSend;
     }
 
-    public abstract void onSuccess();
+    public abstract void onSuccess(ConfigurationModel ssid);
 }

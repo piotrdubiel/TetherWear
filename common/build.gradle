@@ -1,14 +1,14 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion rootProject.ext.compileSdk
+    buildToolsVersion rootProject.ext.buildTools
 
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.minSdk
+        targetSdkVersion rootProject.ext.targetSdk
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
     }
     buildTypes {
         release {
@@ -19,5 +19,6 @@ android {
 }
 
 dependencies {
-    compile 'com.google.android.gms:play-services-wearable:7.5.0'
+    compile rootProject.ext.googleplayWearable
+
 }

@@ -2,20 +2,29 @@ apply plugin: 'com.android.application'
 
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion rootProject.ext.compileSdk
+    buildToolsVersion rootProject.ext.buildTools
 
     defaultConfig {
-        applicationId "io.wear.tether"
-        minSdkVersion 20
-        targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        applicationId rootProject.ext.applicationId
+        minSdkVersion rootProject.ext.minSdk
+        targetSdkVersion rootProject.ext.targetSdk
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+    }
+    signingConfigs {
+        release {
+            storeFile file("../dev-tools/release.jks")
+            storePassword System.getenv("STORE_PASSWORD")
+            keyAlias System.getenv("KEY_ALIAS")
+            keyPassword System.getenv("KEY_PASSWORD")
+        }
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }
@@ -23,6 +32,6 @@ android {
 dependencies {
     compile project(":common")
     compile project(":state-machine")
-    compile 'com.google.android.support:wearable:1.0.0'
-    compile 'com.github.castorflex.smoothprogressbar:library-circular:1.0.1'
+    compile rootProject.ext.supportWearable
+    compile rootProject.ext.circularProgress
 }
