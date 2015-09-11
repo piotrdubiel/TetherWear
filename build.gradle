@@ -1,39 +1,43 @@
 buildscript {
+    ext.kotlin_version = '0.12.+'
+
     repositories {
         jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:1.2.3'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
+
+ext {
+    kotlin = "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    applicationId = "io.wear.tether"
+    buildTools = "22.0.1"
+    minSdk = 20
+    targetSdk = 22
+    compileSdk = 22
+    supportVersion = "22.2.0"
+
+    versionCode = 4
+    versionName = "1.1.0"
+
+    googleplayVersion = '7.5.0'
+    googleplayWearable = "com.google.android.gms:play-services-wearable:$googleplayVersion"
+
+    supportVersion = "22.2.0"
+    support = "com.android.support:support-v4:$supportVersion"
+    appcompat = "com.android.support:appcompat-v7:$supportVersion"
+
+
+    supportWearable =  'com.google.android.support:wearable:1.0.0'
+    circularProgress = 'com.github.castorflex.smoothprogressbar:library-circular:1.0.1'
+}
+
 
 allprojects {
     repositories {
         jcenter()
     }
-
-    ext {
-
-        applicationId = "io.wear.tether"
-        buildTools = "22.0.1"
-        minSdk = 20
-        targetSdk = 22
-        compileSdk = 22
-        supportVersion = "22.2.0"
-
-        versionCode = 3
-        versionName = "1.0.2"
-
-        googleplayVersion = '7.5.0'
-        googleplayWearable = "com.google.android.gms:play-services-wearable:$googleplayVersion"
-
-        supportVersion = "22.2.0"
-        support = "com.android.support:support-v4:$supportVersion"
-        appcompat = "com.android.support:appcompat-v7:$supportVersion"
-
-
-        supportWearable =  'com.google.android.support:wearable:1.0.0'
-        circularProgress = 'com.github.castorflex.smoothprogressbar:library-circular:1.0.1'
-    }
-
 }

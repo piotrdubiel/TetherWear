@@ -24,7 +24,7 @@ public class RequestState extends ChangeHotspotState implements ResultCallback<M
     private Collection<String> getNodes() {
         HashSet<String> results = new HashSet<>();
         NodeApi.GetConnectedNodesResult nodes =
-                Wearable.NodeApi.getConnectedNodes(stateContext.googleApiClient).await();
+                Wearable.NodeApi.getConnectedNodes(stateContext.getGoogleApiClient()).await();
 
         for (Node node : nodes.getNodes()) {
             results.add(node.getId());
@@ -54,7 +54,7 @@ public class RequestState extends ChangeHotspotState implements ResultCallback<M
             for (String node : nodes) {
                 Log.d("Message", "To: " + node);
                 Wearable.MessageApi.sendMessage(
-                        stateContext.googleApiClient,
+                        stateContext.getGoogleApiClient(),
                         node,
                         stateContext.getRequestToSend(),
                         new byte[0]).setResultCallback(RequestState.this);

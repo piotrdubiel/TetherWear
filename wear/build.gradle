@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 
 android {
@@ -32,6 +33,7 @@ android {
 dependencies {
     compile project(":common")
     compile project(":state-machine")
+    compile rootProject.ext.kotlin
     compile rootProject.ext.supportWearable
     compile rootProject.ext.circularProgress
 }

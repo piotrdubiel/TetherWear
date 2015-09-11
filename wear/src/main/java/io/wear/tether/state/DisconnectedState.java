@@ -13,13 +13,13 @@ public class DisconnectedState extends ChangeHotspotState implements GoogleApiCl
     public void onStateApplied(BaseHotspotActivity stateContext) {
         super.onStateApplied(stateContext);
 
-        stateContext.googleApiClient = new GoogleApiClient.Builder(stateContext)
+        stateContext.setGoogleApiClient(new GoogleApiClient.Builder(stateContext)
                 .addApi(Wearable.API)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
-                .build();
+                .build());
 
-        stateContext.googleApiClient.connect();
+        stateContext.getGoogleApiClient().connect();
     }
 
     @Override
